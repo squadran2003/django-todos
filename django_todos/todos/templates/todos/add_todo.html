@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% load bootstrap %}
+{% block title %} Add Todo {% endblock %}
+{% block content %}
+<form method='POST' action='' class='text-left'>
+    {% csrf_token%}
+    {{form|bootstrap}}
+    <input class='btn btn-default btn-lrg' type='submit' value='add a new todo'>
+</form>
+{% endblock %}

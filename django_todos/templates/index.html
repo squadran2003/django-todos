@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block title %}list of todos {% endblock %}
+{% block content %}
+
+
+<h1>List of Todos</h1>
+<div class='text-left'>
+<a href='{% url 'todos:completed' %}' class='btn btn-default btn-lg'>Hide Completed Tasks</a>
+</div>
+<br>
+{% if not object_list %}
+    <p>There are no todos</p>
+{% else %}
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Created On</th> 
+        <th>Status</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        
+    </tr>
+    {% for todo in object_list %}
+    <tr class='text-left'>
+        <td>{{todo.name}}</td>
+        <td>{{todo.created_at}}</td>
+        {% for task in todo.status_set.all %}
+            {% if task.status == 'NOT DONE' %}
+                <td>{{task.status}}</td>
+                <td><a href='{% url 'todos:status' pk=todo.id %}'>CHANGE STATUS</a></td>
+            {% else %}
+                <td>{{task.status}}</td>
+                <td>CLOSED BY: {{task.user}}</td>
+            {% endif %}
+        {% endfor %}
+        {% if user == todo.user%}
+            <td><a href='{% url 'todos:edit' pk=todo.id %}'>EDIT</a></td>
+            <td><a href='{% url 'todos:delete' pk=todo.id %}'>DELETE</a></td>
+        {% else %}
+            <td></td>
+            <td></td>
+        {% endif%}
+    </tr>
+    {% endfor %}
+</table>
+
+{% endif %}
+
+
+{% endblock %}

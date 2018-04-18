@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% load bootstrap %}
+{% block title %} Todo detail {% endblock %}
+{% block content %}
+<div class='jumbotron'>
+    <form action="" method="post">{% csrf_token %}
+        <h3>Are you sure you want to delete "{{ object }}"?</h3>
+        <hr>
+        <input class='btn btn-default btn-lg' type="submit" value="Confirm" />
+    </form>
+</div>
+
+
+{% endblock %}
