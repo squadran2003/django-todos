@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block title %}{{todo.name}}| Deatil{% endblock %}
+{% block content %}
+<div class='text-left'>
+    <h2>Name</h2>
+    <p>{{todo.name}}</p>
+    <h2>Description</h2>
+    <p>{{ todo.description|escape }}</p>
+    <h2>created by</h2> 
+    <p>{{todo.user}}</p>
+    <h2>created on</h2>
+    <p>{{ todo.created_at }}</p>
+</div>
+{% endblock%}

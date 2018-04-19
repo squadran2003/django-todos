@@ -26,6 +26,11 @@ class TodoCreateView(LoginRequiredMixin,CreateView):
                               todo=instance)
         return super().form_valid(form)
 
+class TodoDetailView(DetailView):
+    model = Todo
+    template_name = 'todos/todo_detail.html'
+    context_object = 'todo'
+
 class TodoUpdateView(UpdateView):
     model = Todo
     template_name = 'todos/edit_todo.html'
@@ -49,7 +54,7 @@ class TodoCompletedView(ListView):
     template_name = 'index.html'
 
     def get_queryset(self):
-        return Todo.objects.filter(status__status='DONE')
+        return Todo.objects.filter(status__status='NOT DONE')
 
 
 class RegisterView(CreateView):

@@ -23,8 +23,9 @@
     </tr>
     {% for todo in object_list %}
     <tr class='text-left'>
-        <td>{{todo.name}}</td>
+        <td><a href='{% url 'todos:detail' pk=todo.pk %}'>{{todo.name}}</a></td>
         <td>{{todo.created_at}}</td>
+        {{todo.status_set.status}}
         {% for task in todo.status_set.all %}
             {% if task.status == 'NOT DONE' %}
                 <td>{{task.status}}</td>
