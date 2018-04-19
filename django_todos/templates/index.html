@@ -29,7 +29,9 @@
         {% for task in todo.status_set.all %}
             {% if task.status == 'NOT DONE' %}
                 <td>{{task.status}}</td>
-                <td><a href='{% url 'todos:status' pk=todo.id %}'>CHANGE STATUS</a></td>
+                {% if user.is_authenticated %}
+                    <td><a href='{% url 'todos:status' pk=todo.id %}'>CHANGE STATUS</a></td>
+                {% endif %}
             {% else %}
                 <td>{{task.status}}</td>
                 <td>CLOSED BY: {{task.user}}</td>
