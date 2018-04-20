@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% load bootstrap %}
+{% block title %} Error 404 {% endblock %}
+{% block content %}
+<div class='jumbotron'>
+    <form action="" method="post">{% csrf_token %}
+        <h3>Sorry the resource you are looking for cannot be found</h3>
+
+    </form>
+</div>
+
+
+{% endblock %}

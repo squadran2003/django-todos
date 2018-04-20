@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from .views import *
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',TodolistView.as_view(),name='home'),
@@ -25,3 +26,4 @@ urlpatterns = [
     
 ]
 urlpatterns+=staticfiles_urlpatterns()
+

@@ -8,3 +8,10 @@ todos app that allows you to add, edit and delete your tasks
 *  run pip install -r requirements.txt
 
 
+# Running Tests
+* Navigate to the directory that contains the manage.py file
+* run the commands below
+  * coverage run manage.py test todos
+  * coverage report --include="./*"
+
+

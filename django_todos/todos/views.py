@@ -10,6 +10,8 @@ from django.urls import reverse_lazy
 from .forms import *
 from .models import *
 
+
+
 # Create your views here.
 class TodoCreateView(LoginRequiredMixin,CreateView):
     model = Todo
@@ -54,7 +56,11 @@ class TodoCompletedView(ListView):
     template_name = 'index.html'
 
     def get_queryset(self):
-        return Todo.objects.filter(status__status='NOT DONE')
+        result = Todo.objects.exclude(status__status='DONE')
+        if result:
+            return result
+        else:
+            return Todo.objects.all()
 
 
 class RegisterView(CreateView):
